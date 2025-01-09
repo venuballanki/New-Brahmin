@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Web Page Design</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Navigation Bar */
+    .navbar {
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      background-color: #333;
+      padding: 10px 0;
+    }
+
+    .navbar a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+      margin: 0 15px;
+      display: flex;
+      align-items: center;
+    }
+
+    .navbar a i {
+      margin-right: 8px;
+    }
+
+    .navbar a:hover {
+      color: #f4b400;
+    }
+
+    /* Image Slider */
+    .slider {
+      display: flex; 
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      height: 700px;
+      margin: 20px auto;
+      width: 80%;
+    }
+
+    .slider img {
+      width: 100%;
+      height:auto;
+      object-fit: cover; /* Ensures the image fits nicely without distortion */
+      display: none;
+      
+    }
+
+    .slider img.active {
+      display: block;
+    }
+
+    .slider button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+    }
+
+    .slider button.prev {
+      left: 10px;
+    }
+
+    .slider button.next {
+      right: 10px;
+    }
+
+    /* Resources Section */
+    .resources {
+      text-align: center;
+      padding: 20px;
+    }
+
+    .resources h2 {
+      margin-bottom: 20px;
+    }
+
+    .resources button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      background-color: #333;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .resources button:hover {
+      background-color: #f4b400;
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const slides = document.querySelectorAll(".slider img");
+      let currentIndex = 0;
+
+      document.querySelector(".prev").addEventListener("click", () => {
+        slides[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+        slides[currentIndex].classList.add("active");
+      });
+
+      document.querySelector(".next").addEventListener("click", () => {
+        slides[currentIndex].classList.remove("active");
+        currentIndex = (currentIndex + 1) % slides.length;
+        slides[currentIndex].classList.add("active");
+      });
+
+      slides[currentIndex].classList.add("active");
+    });
+  </script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <div class="navbar">
+    <a href="#"><i class="fas fa-home"></i> Home</a>
+    <a href="#"><i class="fas fa-info-circle"></i> About</a>
+    <a href="#"><i class="fas fa-envelope"></i> Contact Us</a>
+  </div>
+
+  <!-- Image Slider -->
+  <div class="slider">
+    <button class="prev">&#10094;</button>
+    <img src="images/marriage.jpg" alt="Image 1">
+    <img src="images/new_home.jpg" alt="Image 2">
+    <img src="images/new_name.webp" alt="Image 3">
+    <button class="next">&#10095;</button>
+  </div>
+
+  <!-- Resources Section -->
+  <div class="resources">
+    <h2>Resources</h2>
+    <button>Booking</button>
+    <button>Contact</button>
+    <button>Support</button>
+  </div>
+
+  <!-- Font Awesome -->
+  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+</body>
+</html>
